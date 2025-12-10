@@ -84,8 +84,15 @@ def train_travel_time_model():
         print("Model Performance: Needs Improvement")
 
     # 6. Save Model
-    joblib.dump(model, 'subway_time_model.pkl')
-    print("\nModel saved to 'subway_time_model.pkl'")
+    print("\nModel training complete.")
+    print("NOTE: The generated model file (*.pkl) is often too large (>50MB) for GitHub's standard limits.")
+    save_model = input("Do you want to save the trained model locally? (y/n): ")
+
+    if save_model.lower() == 'y':
+        joblib.dump(model, 'subway_time_model.pkl')
+        print("Model saved to 'subway_time_model.pkl'")
+    else:
+        print("Model not saved. The model can be quickly recreated by running this script.")
 
 if __name__ == "__main__":
     train_travel_time_model()
